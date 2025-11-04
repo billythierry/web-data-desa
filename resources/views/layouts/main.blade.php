@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Cari Data Desa')</title>
+    <link rel="icon" type="image/png" href="{!! asset('images/logo_radnet.png') !!}">
 
     <style>
         html, body{
@@ -54,7 +55,7 @@
     <nav>
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/kecamatan') }}">Kecamatan</a>
-        <a href="{{ url('/kabupaten') }}">Kota/Kabupaten</a>
+        <a href="{{ url('/kotakabupaten') }}">Kota/Kabupaten</a>
         <a href="{{ url('/provinsi') }}">Provinsi</a>
     </nav>
 
