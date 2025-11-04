@@ -9,9 +9,7 @@ class DataDesaController extends Controller
 {
     public function index()
     {
-        // Mengambil data dari tabel 'datadesa' dengan paginasi 25 data per halaman
-        $dataDesa = DB::table('datadesa')->paginate(10);
-        return view('index', ['dataDesa' => $dataDesa]);
+        return view('index');
     }
 
     public function cari(Request $request)
