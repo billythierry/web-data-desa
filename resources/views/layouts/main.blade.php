@@ -5,58 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Cari Data Desa')</title>
     <link rel="icon" type="image/png" href="{!! asset('images/logo_radnet.png') !!}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
-    <style>
-        html, body{
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #f9f9fb;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        nav {
-            background-color: #0d6efd;
-            padding: 15px 30px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            flex: 1;
-            padding: 40px;
-        }
-
-        footer{
-            background-color: #0d6efd;
-            color: white;
-            text-align: center;
-            padding: 15px 10px;
-            font-size: 14px;
-
-        }
-    </style>
+    
 </head>
 <body>
     <nav>
-        <a href="{{ url('/') }}">Home</a>
+        <!-- <img src="{{ asset('images/logo_radnet.png') }}" alt="Logo Radnet"> -->
+        <a href="{{ url('/') }}" class='logo-link'>
+            <img src="{{ asset('images/logo_radnet.png') }}" alt="logo radnet" class='logo'>
+        </a>
+        <a href="{{ url('/') }}">Beranda</a>
+        <a href="{{ url('/desa') }}">Data Desa</a>
         <a href="{{ url('/kecamatan') }}">Kecamatan</a>
         <a href="{{ url('/kotakabupaten') }}">Kota/Kabupaten</a>
         <a href="{{ url('/provinsi') }}">Provinsi</a>
+        <a href="{{ url('/tentang') }}">Tentang</a>
     </nav>
 
     <div class="container">
@@ -65,7 +29,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Cari Data Desa. All rights reserved.</p>
+        <p>&copy; Copyright PT Radnet Digital Indonesia © 2025. All Right Reserved.</p>
     </footer>
 </body>
 </html>

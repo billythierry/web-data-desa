@@ -9,7 +9,7 @@ class DataDesaController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('desa');
     }
 
     public function cari(Request $request)
@@ -22,6 +22,6 @@ class DataDesaController extends Controller
             ->where('nama_desa', 'Like', '%' . $cari . '%')
             ->paginate(10);
         
-        return view('index', ['dataDesa' => $dataDesa]);
+        return view('desa', ['dataDesa' => $dataDesa]);
     }
 }
