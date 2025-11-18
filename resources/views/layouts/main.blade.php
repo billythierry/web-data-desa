@@ -12,9 +12,6 @@
 <body>
     <nav>
         <!-- <img src="{{ asset('images/logo_radnet.png') }}" alt="Logo Radnet"> -->
-        <a href="{{ url('/') }}" class='logo-link'>
-            <img src="{{ asset('images/logo_radnet.png') }}" alt="logo radnet" class='logo'>
-        </a>
         <a href="{{ url('/') }}">Beranda</a>
         <a href="{{ url('/desa') }}">Data Desa</a>
         <a href="{{ url('/kecamatan') }}">Kecamatan</a>

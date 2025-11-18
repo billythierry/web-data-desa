@@ -32,7 +32,7 @@
                 <tbody>
                     @foreach($dataDesa as $d)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ ($dataDesa->firstItem() ?? 0) + $loop->index }}</td>
                         <td>{{ $d->nama_desa }}</td>
                         <td>{{ $d->kecamatan }}</td>
                         <td>{{ $d->kota_kabupaten }}</td>
@@ -43,7 +43,7 @@
                 </tbody>
             </table>
 
-            {{ $dataDesa->links() }}
+            {{ $dataDesa->onEachSide(1)->links('pagination.simple-custom') }}
         </div>
     @elseif(request()->has('cari'))
         <div class="result-section" style="text-align:center;">

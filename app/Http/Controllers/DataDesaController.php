@@ -19,8 +19,9 @@ class DataDesaController extends Controller
 
         // Nyari data di database (tabel datadesa)
         $dataDesa = DB::table('datadesa')
-            ->where('nama_desa', 'Like', '%' . $cari . '%')
-            ->paginate(10);
+            ->where('nama_desa', '=', $cari)
+            ->paginate(10)
+            ->appends(['cari' => $cari]);
         
         return view('desa', ['dataDesa' => $dataDesa]);
     }

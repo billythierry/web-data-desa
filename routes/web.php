@@ -17,7 +17,10 @@ Route::get('/desa', [DataDesaController::class, 'index']);
 Route::get('/desa/caridesa', [DataDesaController::class, 'cari']);
 
 Route::get('/kecamatan', [KecamatanController::class, 'index']);
+Route::get('/kecamatan/carikecamatan', [KecamatanController::class, 'cari']);
+
 Route::get('/kotakabupaten', [KotaKabupatenController::class, 'index']);
+Route::get('/kotakabupaten/carikotakabupaten', [KotaKabupatenController::class, 'cari']);
 
 Route::get('/provinsi', [ProvinsiController::class, 'index']);
 Route::get('/provinsi/cariprovinsi', [ProvinsiController::class, 'cari']);
