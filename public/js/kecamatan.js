@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("dashboardData");
+    if (!el) return;
 
     const chartDataRaw = JSON.parse(el.dataset.chart);
-    const mode = el.dataset.mode; 
+    const mode = el.dataset.mode;
 
-    // Tentukan label berdasarkan mode
     const chartData = chartDataRaw.map(item => ({
-        label: mode === "kecamatan" ? item.kecamatan : item.nama_desa,
-        value: Number(item.jumlah_domain_konflik)
+        label: item.kecamatan,
+        value: Number(item.jumlah_domain_konflik),
+        kota: item.kota_kabupaten ?? '-',
+        provinsi: item.provinsi ?? '-'
     }));
 
     new Chart(document.getElementById('chartKecamatan'), {
@@ -15,12 +17,32 @@ document.addEventListener("DOMContentLoaded", () => {
         data: {
             labels: chartData.map(p => p.label),
             datasets: [{
-                label: mode === "kecamatan"
-                    ? 'Top 10 Kecamatan dengan Jumlah Domain Konflik Terbanyak'
-                    : `Desa: Jumlah Domain Konflik`,
+                label: 'Jumlah Domain Konflik',
                 data: chartData.map(p => p.value),
                 backgroundColor: 'rgba(54, 162, 235, 0.6)',
             }]
+        },
+        options: {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function (context) {
+                            const i = context[0].dataIndex;
+                            return chartData[i].label;
+                        },
+                        label: function (context) {
+                            const i = context.dataIndex;
+                            const d = chartData[i];
+
+                            return [
+                                `Jumlah Konflik : ${d.value}`,
+                                `Kota/Kab     : ${d.kota}`,
+                                `Provinsi     : ${d.provinsi}`
+                            ];
+                        }
+                    }
+                }
+            }
         }
     });
 });

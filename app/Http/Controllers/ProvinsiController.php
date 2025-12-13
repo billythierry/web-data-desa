@@ -40,17 +40,31 @@ class ProvinsiController extends Controller
 
         // Query untuk mencari kab/kota berdasarkan nama provinsi
         $dataProvinsi = DB::table('data_konflik_kotakabupaten as kab')
-            ->join('data_konflik_provinsi as p', DB::raw('LEFT(kab.kode_wil, 2)'), '=', DB::raw('LEFT(p.kode_wil, 2)'))
-            ->where('p.provinsi', 'LIKE', '%' . $cari . '%')
-            ->select('kab.kota_kabupaten', 'kab.jumlah_domain_konflik')
-            ->orderByDesc('kab.jumlah_domain_konflik')
-            ->paginate(10)
-            ->withQueryString();
+        ->join('data_konflik_provinsi as p',
+            DB::raw('LEFT(kab.kode_wil, 2)'),
+            '=',
+            DB::raw('LEFT(p.kode_wil, 2)')
+        )
+        ->whereRaw('LOWER(p.provinsi) LIKE ?', ['%' . strtolower($cari) . '%'])
+        ->select(
+            'p.provinsi',
+            'kab.kota_kabupaten',
+            'kab.jumlah_domain_konflik'
+        )
+        ->orderByDesc('kab.jumlah_domain_konflik')
+        ->paginate(10)
+        ->withQueryString();
+
+        $totalDomainKonflik = DB::table('data_konflik_kotakabupaten as kab')
+        ->join('data_konflik_provinsi as p', DB::raw('LEFT(kab.kode_wil, 2)'), '=', DB::raw('LEFT(p.kode_wil, 2)'))
+        ->where('p.provinsi', 'LIKE', '%' . $cari . '%')
+        ->sum('kab.jumlah_domain_konflik');
 
         return view('provinsi', [
             'provinsi' => $provinsi,                 
             'dataProvinsi' => $dataProvinsi,         
             'dataProvinsiForChart' => $dataProvinsi->items(), 
+            'totalDomainKonflik' => $totalDomainKonflik,
             'isSearching' => true,
             'cari' => $cari
         ]);

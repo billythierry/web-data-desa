@@ -2,25 +2,53 @@ document.addEventListener("DOMContentLoaded", () => {
     const el = document.getElementById("dashboardData");
 
     const chartDataRaw = JSON.parse(el.dataset.chart);
-    const mode = el.dataset.mode; // "provinsi" atau "kabupaten"
+    const mode = el.dataset.mode; // provinsi | kabupaten
 
-    // Tentukan label berdasarkan mode
-    const chartData = chartDataRaw.map(item => ({
-        label: mode === "provinsi" ? item.provinsi : item.kota_kabupaten,
-        value: Number(item.jumlah_domain_konflik)
-    }));
+    const labels = chartDataRaw.map(item =>
+        mode === "provinsi"
+            ? item.provinsi
+            : item.kota_kabupaten
+    );
+
+    const values = chartDataRaw.map(item =>
+        Number(item.jumlah_domain_konflik)
+    );
+
+    const provinsiList = chartDataRaw.map(item =>
+        item.provinsi ?? null
+    );
 
     new Chart(document.getElementById('chartProvinsi'), {
         type: 'bar',
         data: {
-            labels: chartData.map(p => p.label),
+            labels: labels,
             datasets: [{
-                label: mode === "provinsi"
-                    ? 'Top 10 Provinsi dengan Jumlah Domain Konflik Terbanyak'
-                    : `Kab/Kota: Jumlah Domain Konflik`,
-                data: chartData.map(p => p.value),
+                label: 'Jumlah Domain Konflik',
+                data: values,
                 backgroundColor: 'rgba(54, 162, 235, 0.6)',
             }]
+        },
+        options: {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function (context) {
+                            const index = context[0].dataIndex;
+                            const kabupaten = labels[index];
+                            const provinsi = provinsiList[index];
+
+                            if (mode === "kabupaten" && provinsi) {
+                                return `${kabupaten} (${provinsi})`;
+                            }
+
+                            return kabupaten;
+                        },
+                        label: function (context) {
+                            return `Jumlah Domain Konflik: ${context.raw}`;
+                        }
+                    }
+                }
+            }
         }
     });
 });

@@ -30,7 +30,11 @@
 
 @if($dataKotaKabupaten && count($dataKotaKabupaten) > 0)
     <div class="result-section">
-        <h3>Hasil Pencarian untuk "{{ $cari }}" sebanyak {{ $dataKotaKabupaten->total() }}</h3>
+        <h3>
+            Hasil Pencarian untuk "{{ $cari }}"
+            ditemukan <strong>{{ $dataKotaKabupaten->total() }}</strong> kecamatan
+            dengan total <strong>{{ $totalDomainKonflik }}</strong> domain konflik
+        </h3>
 
         <table>
             <thead>

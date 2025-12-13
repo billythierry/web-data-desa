@@ -35,13 +35,18 @@
     {{-- Hasil pencarian --}}
     @if(isset($dataProvinsi) && count($dataProvinsi) > 0)
         <div class="result-section">
-            <h3>Hasil Pencarian untuk "{{ $cari }}" sebanyak {{ $dataProvinsi->total() }}</h3>
+            <h3>
+                Hasil Pencarian untuk "{{ $cari }}"
+                sebanyak {{ $dataProvinsi->total() }} kabupaten/kota
+                dengan total {{ number_format($totalDomainKonflik) }} domain konflik
+            </h3>
 
             <table>
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Kota / Kabupaten</th>
+                        <th>Provinsi</th>
                         <th>Jumlah Domain Konflik</th>
                     </tr>
                 </thead>
@@ -50,6 +55,7 @@
                     <tr>
                         <td>{{ ($dataProvinsi->firstItem() ?? 0) + $loop->index }}</td>
                         <td>{{ $d->kota_kabupaten }}</td>
+                        <td>{{ $d->provinsi }}</td>
                         <td>{{ $d->jumlah_domain_konflik }}</td>
                     </tr>
                     @endforeach

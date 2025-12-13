@@ -10,8 +10,9 @@
 
     <!-- Data grafik -->
     <div id="dashboardData"
-        data-chart='@json($kecamatan)'
-        data-mode='kecamatan'>
+        <div id="dashboardData"
+            data-chart='@json($kecamatan)'>
+        </div>
     </div>
 
     <canvas id="chartKecamatan" width="400" height="200"></canvas>
