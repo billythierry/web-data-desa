@@ -8,15 +8,9 @@ class DashboardController extends Controller
 {
     public function index()
     {   
-        // $provinsi = DB::table('data_konflik_provinsi')
-        // ->select('provinsi', 'jumlah_domain_konflik')
-        // ->orderByDesc('jumlah_domain_konflik')
-        // ->limit(10)
-        // ->get();
-
         $jumlahDesaIndonesia = DB::table('datadesa')->count();
 
-        $jumlahDesaKonflik = DB::table('datadesa_konflik')->count();
+        $jumlahDesaKonflik = DB::table('datasama')->count();
 
         $jumlahProvTertinggi = DB::table('data_konflik_provinsi')
         ->select('provinsi')

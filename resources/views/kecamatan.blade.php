@@ -31,7 +31,13 @@
 
 @if($dataKecamatan && count($dataKecamatan) > 0)
     <div class="result-section">
-        <h3>Ditemukan sebanyak {{ $dataKecamatan->total() }} data untuk "{{ $cari }}"</h3>
+        <h3>
+            Hasil pencarian untuk
+            "{{ $cari }}"
+            Ditemukan
+            <strong>{{ $dataKecamatan->total() }}</strong> desa dengan total
+            <strong>{{ $totalDomainKonflik }}</strong> domain konflik
+        </h3>
         <table>
             <thead>
                 <tr>

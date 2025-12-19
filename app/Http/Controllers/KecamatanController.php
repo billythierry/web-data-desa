@@ -56,9 +56,14 @@ class KecamatanController extends Controller
             ->paginate(10)
             ->appends(['cari' => $cari]);
 
+        $totalDomainKonflik = DB::table('data_potensi_konflik')
+        ->whereRaw('LOWER(kecamatan) = LOWER(?)', [$cari])
+        ->value('jumlah_domain_konflik');
+
         return view('kecamatan', [
             'kecamatan' => $kecamatan,
             'dataKecamatan' => $dataKecamatan,
+            'totalDomainKonflik' => $totalDomainKonflik,
             'isSearching' => true,
             'cari' => $cari
         ]);

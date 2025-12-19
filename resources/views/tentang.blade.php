@@ -3,11 +3,37 @@
 @section('title', 'Tentang')
 
 @section('content')
-    <h1>Tentang Kami</h1>
-    <p>Di Indonesia, ada sebanyak 74.721 desa. Setiap desa nantinya akan diberi sebuah domain untuk membuat website masing-masing desa.
-        Domain desa tersebut nantinya diberi nama desa ditambah dengan akhiran ".desa.id", misalnya desa Sooko, maka domainnya 
-        adalah "sooko.desa.id". Namun mengingat jumlah desa di Indonesia yang sangat banyak, tidak menutup kemungkinan bahwa ada 
-        beberapa desa yang memiliki kesamaan nama. Hal ini berpengaruh terhadap pembuatan domain, karena nama domain tidak boleh sama.
-        Melalui kerjasama dengan Kepmendagri, dilakukan pengolahan data desa untuk mengetahui desa mana saja.</p>
+<style>
+    .tentang-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px 30px;
+        background-color: #f5f5f5;
+        border-radius: 6px;
+    }
 
+    .tentang-container h1 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #000;
+    }
+
+    .tentang-container p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #333;
+    }
+</style>
+
+<div class="tentang-container">
+    <h1>Sekilas Tentang Layanan Ini</h1>
+    <p>
+        Website ini bertujuan untuk memudahkan pengguna dalam mencari informasi mengenai
+        data desa yang memiliki kesamaan di berbagai kecamatan,
+        kabupaten, dan provinsi. Kesamaan nama ini dapat menimbulkan potensi dalam pembuatan
+        domain masing - masing desa. Selain itu juga ada data kecamatan, kota & kabupaten, dan 
+        provinsi.
+    </p>
+</div>
 @endsection
