@@ -37,21 +37,21 @@
         </h3>
 
         <table>
-            <thead>
+           <thead>
                 <tr>
-                    <th>No</th>
                     <th>Kecamatan</th>
+                    <th>Provinsi</th>
                     <th>Jumlah Domain Konflik</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($dataKotaKabupaten as $d)
+            @foreach ($dataKotaKabupaten as $item)
                 <tr>
-                    <td>{{ ($dataKotaKabupaten->firstItem() ?? 0) + $loop->index }}</td>
-                    <td>{{ $d->kecamatan}}</td>
-                    <td>{{ $d->jumlah_domain_konflik }}</td>
+                    <td>{{ $item->kecamatan }}</td>
+                    <td>{{ $item->provinsi }}</td>
+                    <td>{{ $item->jumlah_domain_konflik }}</td>
                 </tr>
-                @endforeach
+            @endforeach
             </tbody>
         </table>
 

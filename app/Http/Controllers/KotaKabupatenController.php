@@ -62,9 +62,27 @@ class KotaKabupatenController extends Controller
         ->sum('kec.jumlah_domain_konflik');
 
         $dataKotaKabupaten = DB::table('data_konflik_kecamatan as kec')
-        ->join('data_konflik_kotakabupaten as kk', DB::raw('LEFT(kec.kode_wil, 5)'), '=', DB::raw('LEFT(kk.kode_wil, 5)'))
-        ->whereRaw("LOWER(TRIM(REPLACE(REPLACE(kk.kota_kabupaten, 'KAB.', ''), 'KOTA', ''))) = ?", [ $cari ])
-        ->select('kec.kecamatan', 'kec.jumlah_domain_konflik')
+        ->join(
+            'data_konflik_kotakabupaten as kk',
+            DB::raw('LEFT(kec.kode_wil, 5)'),
+            '=',
+            DB::raw('LEFT(kk.kode_wil, 5)')
+        )
+        ->join(
+            'data_konflik_provinsi as p',
+            DB::raw('LEFT(kk.kode_wil, 2)'),
+            '=',
+            DB::raw('LEFT(p.kode_wil, 2)')
+        )
+        ->whereRaw(
+            "LOWER(TRIM(REPLACE(REPLACE(kk.kota_kabupaten, 'KAB.', ''), 'KOTA', ''))) = ?",
+            [ strtolower($cari) ]
+        )
+        ->select(
+            'kec.kecamatan',
+            'p.provinsi',
+            'kec.jumlah_domain_konflik'
+        )
         ->orderByDesc('kec.jumlah_domain_konflik')
         ->paginate(10)
         ->withQueryString();
