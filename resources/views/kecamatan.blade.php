@@ -35,8 +35,9 @@
             Hasil pencarian untuk
             "{{ $cari }}"
             Ditemukan
-            <strong>{{ $dataKecamatan->total() }}</strong> desa dengan total
-            <strong>{{ $totalDomainKonflik }}</strong> domain konflik
+            <strong>{{ $dataKecamatan->total() }}</strong> desa 
+            <!-- dengan total
+            <strong>{{ $totalDomainKonflik }}</strong> domain -->
         </h3>
         <table>
             <thead>

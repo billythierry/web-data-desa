@@ -33,12 +33,13 @@
         <h3>
             Hasil Pencarian untuk "{{ $cari }}"
             ditemukan <strong>{{ $dataKotaKabupaten->total() }}</strong> kecamatan
-            dengan total <strong>{{ $totalDomainKonflik }}</strong> domain konflik
+            <!-- dengan total <strong>{{ $totalDomainKonflik }}</strong> domain -->
         </h3>
 
         <table>
            <thead>
                 <tr>
+                    <th>No</th>
                     <th>Kecamatan</th>
                     <th>Provinsi</th>
                     <th>Jumlah Domain Konflik</th>
@@ -47,6 +48,7 @@
             <tbody>
             @foreach ($dataKotaKabupaten as $item)
                 <tr>
+                    <td>{{ ($dataKotaKabupaten->firstItem() ?? 0) + $loop->index }}</td>
                     <td>{{ $item->kecamatan }}</td>
                     <td>{{ $item->provinsi }}</td>
                     <td>{{ $item->jumlah_domain_konflik }}</td>

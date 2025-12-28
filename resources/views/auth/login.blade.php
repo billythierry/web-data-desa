@@ -143,7 +143,7 @@
                 @enderror
             </div>
 
-            <a class="forgot" href="#">lupa password?</a>
+            <!-- <a class="forgot" href="#">lupa password?</a> -->
 
             <button type="submit" class="login-btn">MASUK</button>
 

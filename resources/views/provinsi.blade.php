@@ -22,7 +22,7 @@
     {{-- Pencarian --}}
     <div class="search-section">
         <h2>Cari Data Provinsi</h2>
-        <p>Masukkan nama provinsi untuk mencari data kabupaten/kota dengan konflik terbanyak</p>
+        <p>Masukkan nama provinsi untuk mencari data domain konflik</p>
 
         <form class="search-box" action="{{ url('/provinsi/cariprovinsi') }}" method="GET">
             <input type="text" name="cari" placeholder="Masukkan Nama Provinsi..."
@@ -38,7 +38,7 @@
             <h3>
                 Hasil Pencarian untuk "{{ $cari }}"
                 sebanyak {{ $dataProvinsi->total() }} kabupaten/kota
-                dengan total {{ number_format($totalDomainKonflik) }} domain konflik
+                dengan total {{ number_format($totalDomainKonflik) }} domain
             </h3>
 
             <table>

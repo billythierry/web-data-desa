@@ -96,17 +96,17 @@
     </div>
 
     <div class="card card-blue">
-        <div class="title">Provinsi dengan Konflik tertinggi</div>
+        <div class="title">Provinsi dengan Konflik Domain Tertinggi</div>
         <div class="value">{{ $jumlahProvTertinggi->provinsi ?? '-'}} </div>
     </div>
 
     <div class="card card-darkblue">
-        <div class="title">Kota/Kabupaten dengan Konflik Tertinggi</div>
+        <div class="title">Kota/Kabupaten dengan Konflik Domain Tertinggi</div>
         <div class="value">{{ $jumlahkotakabTertinggi->kota_kabupaten }}</div>
     </div>
 
     <div class="card card-orange">
-        <div class="title">Kecamatan dengan Konflik tertinggi</div>
+        <div class="title">Kecamatan dengan Konflik Domain Tertinggi</div>
         <div class="value">{{ $jumlahkecTertinggi->kecamatan }}</div>
     </div>
 
